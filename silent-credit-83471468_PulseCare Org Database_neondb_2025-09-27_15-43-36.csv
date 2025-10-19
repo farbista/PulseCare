@@ -1,0 +1,325 @@
+"table_name","column_name","data_type","is_nullable","column_default"
+"admin_audit_log","id","integer","NO","nextval('admin_audit_log_id_seq'::regclass)"
+"admin_audit_log","admin_id","integer","NO",
+"admin_audit_log","action","text","NO",
+"admin_audit_log","target_type","text","NO",
+"admin_audit_log","target_id","text","YES",
+"admin_audit_log","details","text","YES",
+"admin_audit_log","ip_address","text","YES",
+"admin_audit_log","user_agent","text","YES",
+"admin_audit_log","created_at","timestamp without time zone","YES","now()"
+"badges","badge_id","integer","NO","nextval('badges_badge_id_seq'::regclass)"
+"badges","name","text","NO",
+"badges","type","text","NO",
+"badges","requirement","text","NO",
+"badges","description","text","NO",
+"badges","icon_url","text","NO",
+"badges","created_at","timestamp without time zone","NO","now()"
+"blood_donations","id","integer","NO","nextval('donations_id_seq'::regclass)"
+"blood_donations","created_at","timestamp without time zone","YES","now()"
+"blood_donations","donorId","character varying","NO",
+"blood_donations","recipientId","character varying","NO",
+"blood_donations","recipient_name","text","NO",
+"blood_donations","hospital_name","text","NO",
+"blood_donations","donation_date","text","NO",
+"blood_donations","blood_group","text","NO",
+"blood_donations","units_given","integer","NO",
+"blood_donations","status","text","YES","'completed'::text"
+"blood_donations","notes","text","YES",
+"blood_donations","rating","integer","YES",
+"blood_donations","testimonial","text","YES",
+"blood_donations","donation_type","text","YES",
+"blood_donations","hemoglobin","numeric","YES",
+"blood_inventory","id","integer","NO","nextval('blood_inventory_id_seq'::regclass)"
+"blood_inventory","blood_group","text","NO",
+"blood_inventory","units","integer","NO","0"
+"blood_inventory","critical_threshold","integer","NO","10"
+"blood_inventory","last_updated","timestamp without time zone","YES","now()"
+"blood_issuance","id","integer","NO","nextval('blood_issuance_id_seq'::regclass)"
+"blood_issuance","blood_group","text","NO",
+"blood_issuance","units","integer","NO",
+"blood_issuance","recipient","text","YES",
+"blood_issuance","hospital","text","NO",
+"blood_issuance","purpose","text","YES",
+"blood_issuance","issuance_date","timestamp without time zone","NO",
+"blood_issuance","admin_id","integer","YES",
+"blood_issuance","created_at","timestamp without time zone","YES","now()"
+"bulk_operations_log","id","integer","NO","nextval('bulk_operations_log_id_seq'::regclass)"
+"bulk_operations_log","admin_id","integer","NO",
+"bulk_operations_log","operation","text","NO",
+"bulk_operations_log","target_type","text","NO",
+"bulk_operations_log","total_records","integer","NO",
+"bulk_operations_log","success_count","integer","NO",
+"bulk_operations_log","failure_count","integer","NO",
+"bulk_operations_log","details","text","YES",
+"bulk_operations_log","created_at","timestamp without time zone","YES","now()"
+"communication_logs","id","integer","NO","nextval('communication_logs_id_seq'::regclass)"
+"communication_logs","from_user_id","integer","YES",
+"communication_logs","to_user_id","integer","NO",
+"communication_logs","request_id","integer","YES",
+"communication_logs","communication_type","text","NO",
+"communication_logs","status","text","NO",
+"communication_logs","duration","integer","YES",
+"communication_logs","content","text","YES",
+"communication_logs","metadata","json","YES",
+"communication_logs","created_at","timestamp without time zone","NO","now()"
+"donation_appointments","id","integer","NO","nextval('donation_appointments_id_seq'::regclass)"
+"donation_appointments","seeker_id","integer","NO",
+"donation_appointments","request_id","integer","YES",
+"donation_appointments","appointment_date","timestamp without time zone","NO",
+"donation_appointments","appointment_time","text","NO",
+"donation_appointments","location","text","NO",
+"donation_appointments","hospital_name","text","NO",
+"donation_appointments","status","text","NO","'scheduled'::text"
+"donation_appointments","donor_confirmed_at","timestamp without time zone","YES",
+"donation_appointments","seeker_confirmed_at","timestamp without time zone","YES",
+"donation_appointments","completed_at","timestamp without time zone","YES",
+"donation_appointments","cancelled_at","timestamp without time zone","YES",
+"donation_appointments","cancellation_reason","text","YES",
+"donation_appointments","notes","text","YES",
+"donation_appointments","google_calendar_event_id","text","YES",
+"donation_appointments","reminders_sent","integer","NO","0"
+"donation_appointments","created_at","timestamp without time zone","NO","now()"
+"donation_appointments","updated_at","timestamp without time zone","NO","now()"
+"donation_appointments","donorid","integer","NO",
+"donation_history","id","integer","NO","nextval('donation_history_id_seq'::regclass)"
+"donation_history","user_id","integer","NO",
+"donation_history","hospital_name","text","NO",
+"donation_history","hospital_location","text","NO",
+"donation_history","donation_date","text","NO",
+"donation_history","donation_type","text","NO",
+"donation_history","donation_picture","text","YES",
+"donation_history","created_at","timestamp without time zone","YES","now()"
+"education_history","id","integer","NO","nextval('education_history_id_seq'::regclass)"
+"education_history","user_id","integer","NO",
+"education_history","institution_name","text","NO",
+"education_history","course","text","NO",
+"education_history","institution_type","text","NO",
+"education_history","start_date","text","NO",
+"education_history","end_date","text","YES",
+"education_history","is_graduated","boolean","YES","false"
+"education_history","description","text","YES",
+"education_history","created_at","timestamp without time zone","YES","now()"
+"emergency_blood_requests","id","integer","NO","nextval('emergency_requests_id_seq'::regclass)"
+"emergency_blood_requests","patient_name","text","NO",
+"emergency_blood_requests","patient_age","integer","NO",
+"emergency_blood_requests","blood_group","text","NO",
+"emergency_blood_requests","units_required","integer","NO",
+"emergency_blood_requests","hospital_name","text","NO",
+"emergency_blood_requests","doctor_name","text","NO",
+"emergency_blood_requests","hospital_address","text","NO",
+"emergency_blood_requests","required_by","text","NO",
+"emergency_blood_requests","contact_number","text","NO",
+"emergency_blood_requests","additional_info","text","YES",
+"emergency_blood_requests","is_critical","boolean","YES","false"
+"emergency_blood_requests","status","text","YES","'pending'::text"
+"emergency_blood_requests","requester_id","integer","YES",
+"emergency_blood_requests","documents","jsonb","YES",
+"emergency_blood_requests","created_at","timestamp without time zone","YES","now()"
+"emergency_blood_requests","updated_at","timestamp without time zone","YES",
+"emergency_blood_requests","responder_id","integer","YES",
+"emergency_blood_requests","emergency_type","text","YES",
+"emergency_blood_requests","upazila","text","YES",
+"emergency_blood_requests","district","text","YES",
+"emergency_blood_requests","division","text","YES",
+"emergency_blood_requests","latitude","numeric","YES",
+"emergency_blood_requests","longitude","numeric","YES",
+"emergency_blood_requests","contact_person","text","YES",
+"emergency_blood_requests","reason","text","YES",
+"emergency_blood_requests","auto_approved","boolean","YES",
+"emergency_blood_requests","approved_at","timestamp without time zone","YES",
+"emergency_blood_requests","approval_type","text","YES",
+"emergency_blood_requests","approved_by","integer","YES",
+"emergency_blood_requests","rejected_at","timestamp without time zone","YES",
+"emergency_blood_requests","rejected_by","integer","YES",
+"emergency_blood_requests","rejection_reason","text","YES",
+"emergency_blood_requests","ip_address","text","YES",
+"emergency_blood_requests","device_info","text","YES",
+"gbr_requests","id","integer","NO","nextval('gbr_requests_id_seq'::regclass)"
+"gbr_requests","created_at","timestamp without time zone","YES","CURRENT_TIMESTAMP"
+"gbr_requests","requesterid","character varying","NO",
+"gbr_requests","recipientid","character varying","NO",
+"gbr_requests","patient_name","character varying","NO",
+"gbr_requests","patients_problem","text","YES",
+"gbr_requests","blood_group","character varying","NO",
+"gbr_requests","hemoglobin_point","numeric","YES",
+"gbr_requests","units_required","integer","YES",
+"gbr_requests","contact_persons_number","character varying","NO",
+"gbr_requests","donation_date","date","YES",
+"gbr_requests","donation_time","time without time zone","YES",
+"gbr_requests","hospital_name","character varying","NO",
+"gbr_requests","address","character varying","YES",
+"gbr_requests","upazila","text","YES",
+"gbr_requests","district","text","YES",
+"gbr_requests","division","character varying","YES",
+"hospital","id","integer","NO","nextval('hospital_id_seq'::regclass)"
+"hospital","name","text","NO",
+"hospital","location","text","NO",
+"hospital","created_at","timestamp with time zone","YES","CURRENT_TIMESTAMP"
+"messages","id","integer","NO","nextval('messages_id_seq'::regclass)"
+"messages","content","text","NO",
+"messages","is_read","boolean","YES","false"
+"messages","created_at","timestamp without time zone","YES","now()"
+"messages","senderId","character varying","YES",
+"messages","recipientId","character varying","YES",
+"notification_templates","id","integer","NO","nextval('notification_templates_id_seq'::regclass)"
+"notification_templates","name","text","NO",
+"notification_templates","type","text","NO",
+"notification_templates","subject","text","YES",
+"notification_templates","template","text","NO",
+"notification_templates","variables","text","YES",
+"notification_templates","is_active","boolean","YES","true"
+"notification_templates","created_at","timestamp without time zone","YES","now()"
+"notification_templates","updated_at","timestamp without time zone","YES","now()"
+"notifications","id","integer","NO","nextval('notifications_id_seq'::regclass)"
+"notifications","user_id","integer","NO",
+"notifications","type","text","NO",
+"notifications","title","text","NO",
+"notifications","content","text","NO",
+"notifications","data","json","YES",
+"notifications","is_read","boolean","NO","false"
+"notifications","channels","json","NO","'[""web""]'::json"
+"notifications","delivery_status","json","YES","'{}'::json"
+"notifications","scheduled_for","timestamp without time zone","YES",
+"notifications","sent_at","timestamp without time zone","YES",
+"notifications","read_at","timestamp without time zone","YES",
+"notifications","created_at","timestamp without time zone","NO","now()"
+"otp_codes","id","integer","NO","nextval('otp_codes_id_seq'::regclass)"
+"otp_codes","user_id","integer","YES",
+"otp_codes","identifier","text","NO",
+"otp_codes","code","text","NO",
+"otp_codes","purpose","text","NO",
+"otp_codes","attempts","integer","NO","0"
+"otp_codes","is_used","boolean","NO","false"
+"otp_codes","expires_at","timestamp without time zone","NO",
+"otp_codes","created_at","timestamp without time zone","NO","now()"
+"privacy_settings","id","integer","NO","nextval('privacy_settings_id_seq'::regclass)"
+"privacy_settings","user_id","integer","NO",
+"privacy_settings","share_email","boolean","NO","true"
+"privacy_settings","share_phone","boolean","NO","true"
+"privacy_settings","created_at","timestamp without time zone","NO","now()"
+"reactivation_requests","id","integer","NO","nextval('reactivation_requests_id_seq'::regclass)"
+"reactivation_requests","request_id","text","NO",
+"reactivation_requests","user_id","integer","NO",
+"reactivation_requests","reason","text","NO",
+"reactivation_requests","documents","text","YES",
+"reactivation_requests","status","text","NO","'Pending'::text"
+"reactivation_requests","admin_id","integer","YES",
+"reactivation_requests","admin_note","text","YES",
+"reactivation_requests","processed_at","timestamp without time zone","YES",
+"reactivation_requests","created_at","timestamp without time zone","YES","now()"
+"search_activity","id","integer","NO","nextval('search_activity_id_seq'::regclass)"
+"search_activity","ip_address","text","NO",
+"search_activity","user_agent","text","YES",
+"search_activity","search_query","text","YES",
+"search_activity","search_filters","json","YES",
+"search_activity","result_count","integer","YES","0"
+"search_activity","session_id","text","YES",
+"search_activity","user_id","integer","YES",
+"search_activity","created_at","timestamp without time zone","NO","now()"
+"system_analytics","id","integer","NO","nextval('system_analytics_id_seq'::regclass)"
+"system_analytics","metric_type","text","NO",
+"system_analytics","metric_value","integer","NO","1"
+"system_analytics","user_id","integer","YES",
+"system_analytics","metadata","json","YES",
+"system_analytics","recorded_at","timestamp without time zone","NO","now()"
+"system_analytics","created_date","date","NO","now()"
+"system_settings","id","integer","NO","nextval('system_settings_id_seq'::regclass)"
+"system_settings","category","text","NO",
+"system_settings","key","text","NO",
+"system_settings","value","text","NO",
+"system_settings","data_type","text","NO","'string'::text"
+"system_settings","description","text","YES",
+"system_settings","updated_by","integer","YES",
+"system_settings","updated_at","timestamp without time zone","YES","now()"
+"testimonials","id","integer","NO","nextval('testimonials_id_seq'::regclass)"
+"testimonials","rating","integer","NO",
+"testimonials","content","text","NO",
+"testimonials","media_files","jsonb","YES","'[]'::jsonb"
+"testimonials","is_reported","boolean","YES","false"
+"testimonials","created_at","timestamp without time zone","YES","now()"
+"testimonials","reviewerId","character varying","YES",
+"testimonials","revieweeId","character varying","YES",
+"two_factor_auth","id","integer","NO","nextval('two_factor_auth_id_seq'::regclass)"
+"two_factor_auth","user_id","integer","NO",
+"two_factor_auth","is_enabled","boolean","NO","false"
+"two_factor_auth","secret","text","YES",
+"two_factor_auth","backup_codes","json","YES","'[]'::json"
+"two_factor_auth","enabled_at","timestamp without time zone","YES",
+"two_factor_auth","last_used_at","timestamp without time zone","YES",
+"two_factor_auth","created_at","timestamp without time zone","NO","now()"
+"user_badges","id","integer","NO","nextval('user_badges_id_seq'::regclass)"
+"user_badges","user_id","integer","NO",
+"user_badges","badge_id","integer","NO",
+"user_badges","earned_at","timestamp without time zone","NO","now()"
+"user_verifications","id","integer","NO","nextval('user_verifications_id_seq'::regclass)"
+"user_verifications","user_id","integer","NO",
+"user_verifications","verification_type","text","NO",
+"user_verifications","document_type","text","YES",
+"user_verifications","document_number","text","YES",
+"user_verifications","document_images","json","YES","'[]'::json"
+"user_verifications","status","text","NO","'pending'::text"
+"user_verifications","reviewed_by","integer","YES",
+"user_verifications","reviewed_at","timestamp without time zone","YES",
+"user_verifications","rejection_reason","text","YES",
+"user_verifications","expires_at","timestamp without time zone","YES",
+"user_verifications","created_at","timestamp without time zone","NO","now()"
+"user_verifications","updated_at","timestamp without time zone","NO","now()"
+"users","id","integer","NO","nextval('users_id_seq'::regclass)"
+"users","username","text","NO",
+"users","email","text","NO",
+"users","phone","text","NO",
+"users","password","text","NO",
+"users","full_name","text","NO",
+"users","date_of_birth","text","NO",
+"users","blood_group","text","NO",
+"users","weight","integer","NO",
+"users","district","text","NO",
+"users","upazila","text","NO",
+"users","address","text","NO",
+"users","last_donation_date","text","YES",
+"users","is_verified","boolean","YES","false"
+"users","is_available","boolean","YES","true"
+"users","donation_count","integer","YES","0"
+"users","rating","integer","YES","5"
+"users","profile_picture","text","YES",
+"users","cover_photo","text","YES",
+"users","bio","text","YES",
+"users","education","text","YES",
+"users","work","text","YES",
+"users","current_city","text","YES",
+"users","hometown","text","YES",
+"users","social_links","jsonb","YES","'{}'::jsonb"
+"users","blood_donation_history","jsonb","YES","'[]'::jsonb"
+"users","is_admin","boolean","YES","false"
+"users","created_at","timestamp without time zone","YES","now()"
+"users","donorId","character varying","YES",
+"users","is_system_created","boolean","YES","false"
+"users","status","character varying","YES",
+"users","age","integer","YES",
+"users","hemoglobin","numeric","YES",
+"users","last_donation_date_date","text","YES",
+"users","gender","text","YES",
+"users","division","character varying","YES",
+"users","stat","character varying","YES",
+"verification_requests","id","integer","NO","nextval('verification_requests_id_seq'::regclass)"
+"verification_requests","request_id","text","NO",
+"verification_requests","user_id","integer","NO",
+"verification_requests","verification_type","text","NO",
+"verification_requests","documents","text","YES",
+"verification_requests","reason","text","YES",
+"verification_requests","status","text","NO","'Pending'::text"
+"verification_requests","admin_id","integer","YES",
+"verification_requests","admin_note","text","YES",
+"verification_requests","processed_at","timestamp without time zone","YES",
+"verification_requests","created_at","timestamp without time zone","YES","now()"
+"work_history","id","integer","NO","nextval('work_history_id_seq'::regclass)"
+"work_history","user_id","integer","NO",
+"work_history","company","text","NO",
+"work_history","position","text","NO",
+"work_history","city","text","NO",
+"work_history","description","text","YES",
+"work_history","start_date","text","NO",
+"work_history","end_date","text","YES",
+"work_history","is_current_job","boolean","YES","false"
+"work_history","created_at","timestamp without time zone","YES","now()"
