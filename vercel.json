@@ -1,8 +1,11 @@
 {
   "builds": [
     {
-      "src": "client/vite.config.ts",
-      "use": "@vercel/vite"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "client/dist"
+      }
     },
     {
       "src": "server/index.ts",
@@ -16,7 +19,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/dist/public/$1"
+      "dest": "/client/dist/$1"
     }
   ],
   "env": {
