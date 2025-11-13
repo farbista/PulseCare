@@ -8,7 +8,7 @@
     "db:migrate": "drizzle-kit migrate:pg",
     "dev": "cross-env NODE_ENV=development nodemon --exec tsx server/index.ts",
     "build": "npm run build:frontend && npm run build:backend",
-   "build:frontend": "vite build --config client/vite.config.ts",
+   "build:frontend": "vite build --config ./client/vite.config.ts",
     "build:backend": "tsc -p server/tsconfig.json",
     "start": "NODE_ENV=production node dist/index.js",
     "check": "tsc",
